@@ -14,11 +14,7 @@ mkdir d_1 d_2 d_3
 cd d_1
 >>.
 6) Создать 5 файлов (3 txt, 2 json)
-cat > t_1.txt
-cat > t_2.txt
-cat > t_3.txt
-cat > t_4.json
-cat > t_5.json
+touch t_1.txt t_2.txt t_3.txt t_4.json t_5.json
 
 7) Создать 3 папки
 mkdir t_1 t_2 t_3
@@ -27,36 +23,34 @@ mkdir t_1 t_2 t_3
 ls -la
 
 9) + Открыть любой txt файл
-cat t_1.txt
+vim t_1.txt
 
 10) + написать туда что-нибудь, любой текст.
-cat >> t_1.txt (после каждой строки ставим Enter)
+{ "name" : "Andrii" }
 
 11) + сохранить и выйти.
-Esc Ctrl
+esc :wq
 
 12) Выйти из папки на уровень выше
 cd ..
 
 13) переместить любые 2 файла, которые вы создали, в любую другую папку.
-mv t_2.txt t_1/t_2.txt
-mv t_4.json t_1/t_4.json
+mv t_2.txt t_4.json t_1/
 
 14) скопировать любые 2 файла, которые вы создали, в любую другую папку.
-cp t_3.txt t_2/t_3.txt
-cp t_3.txt t_2/t_3.txt
+cp t_3.txt t_5.json t_2/
 
 15) Найти файл по имени
 find . -name "t_1.txt"
 
 16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.
-tail -f grep t_1.txt
+grep "" t_1.txt
 
 17) вывести несколько перgвых строк из текстового файла
-head -n '2' "t_1.txt"
+head t_1.txt -n 3
 
 18) вывести несколько последних строк из текстового файла
-tail -n '2' "t_1.txt"
+tail t_1.txt -n 3
 
 19) просмотреть содержимое длинного файла (команда less) изучите как она работает.
 less t_1.txt
@@ -64,10 +58,29 @@ less t_1.txt
 20) вывести дату и время
 date +%Y-%m-%d-%H-%M
 
+____________________________
 
+Задание *
 
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request
 
+curl http://162.55.220.72:5005/terminal-hw-request
 
+http://162.55.220.72:5005/get_method?name=(set_your_String)&age=(set_your_number)","result":["Your_String","Your_number"]}}
 
+curl "http://162.55.220.72:5005/get_method?name=sergio&age=28"
 
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
 
+vim firstscript
+#!/bin/bash
+cd hw1
+mkdir hw2 hw3 hw4
+cd hw2
+touch file1.txt file2.txt file3.txt file4.json file5.json
+mkdir hw5 hw6 hw7
+ls -la
+mv file1.txt file2.txt hw6/
+esq: wq
+./firstscript
